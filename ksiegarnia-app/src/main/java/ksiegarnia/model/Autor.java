@@ -8,11 +8,9 @@ public class Autor {
     private int id;
     private String imie;
     private String nazwisko;
-    private List<Ksiazka> ksiazki = new ArrayList<>();//relacja 1 do wielu
+    private List<Ksiazka> ksiazki = new ArrayList<>();
 
-    //listy zeby przey przełączniu na SpringDate nie było komplikacji
-    //lista od seta różni się tym że są w niej powtórzenia oraz trzymamy kolejność wrzucania
-    //struktury danych wazna rzecz w zachowaniu spójności danych w warstwie aplikacyjnej
+
     public Autor(int id, String firstName, String lastName) {
         this.id = id;
         this.imie = firstName;

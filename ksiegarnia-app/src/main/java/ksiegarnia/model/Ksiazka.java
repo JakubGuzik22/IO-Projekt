@@ -7,10 +7,9 @@ public class Ksiazka {
 
     private int id;
     private String tytul;
-    private Autor autor;//relacja do autora - kolejny obiekt danych w uproszczeniu założenie że jedna książka ma 1 autora
+    private Autor autor;
     private float ocena;
     private List<Ksiegarnia> ksiegarnie = new ArrayList<>();
-//relacja wiele do wiele - bidirectional
 
     public Ksiazka(int id, String title, Autor autor, float rating) {
         this.id = id;

@@ -11,9 +11,8 @@ public class Ksiegarnia {
     private String nazwa;
 
     @JsonIgnore
-    private List<Ksiazka> ksiazki = new ArrayList<>();//struktura kolekcyjna związaną z granymi filmami, uproszczone
+    private List<Ksiazka> ksiazki = new ArrayList<>();
 
-//relacja wiele do wiele
     public Ksiegarnia(int id, String name) {
         this.id = id;
         this.nazwa = name;
@@ -22,7 +21,6 @@ public class Ksiegarnia {
     public Ksiegarnia() {
     }
 
-//settery, gettery i to String - później będziemy korzystać z wynalazku Lombok
     public int getId() {
         return id;
     }
