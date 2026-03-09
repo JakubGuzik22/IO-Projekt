@@ -1,16 +1,22 @@
 package ksiegarnia.web.rest;
 
+import jakarta.servlet.http.HttpServletRequest;
 import ksiegarnia.model.Ksiazka;
 import ksiegarnia.model.Ksiegarnia;
 import ksiegarnia.service.KsiazkaService;
 import ksiegarnia.service.KsiegarniaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +25,8 @@ import java.util.List;
 public class KsiegarniaRest {
     private final KsiegarniaService ksiegarniaService;
     private final KsiazkaService ksiazkaService;
+    private final MessageSource messageSource;
+    private final LocaleResolver localeResolver;
 
     @GetMapping("ksiegarnie")
     List<Ksiegarnia> getKsiegarnia(
@@ -63,12 +71,21 @@ public class KsiegarniaRest {
     }
 
     @PostMapping("/ksiegarnie")
-       ResponseEntity<Ksiegarnia> dodajKsiegarnie(@RequestBody Ksiegarnia ksiegarnia){
+       ResponseEntity<?> dodajKsiegarnie(@Validated @RequestBody Ksiegarnia ksiegarnia, Errors errors, HttpServletRequest request) {
           log.info("teraz dodamy nowa ksiegarnie", ksiegarnia);
-          // TODO validation
-          ksiegarnia = ksiegarniaService.dodajKsiegarnie(ksiegarnia);
-          log.info("dodano nowa ksiegarnie", ksiegarnia);
-          return ResponseEntity.status(HttpStatus.CREATED).body(ksiegarnia);
-      }
 
+          if(errors.hasErrors()){
+            Locale locale = localeResolver.resolveLocale(request);
+                    //new Locale("pl","PL");
+            String errorMessage = errors.getAllErrors().stream()
+                    //.map(oe->messageSource.getMessage(oe.getCode(), new Object[0], locale))
+                    //.map(oe->oe.toString())
+                    .map(oe -> messageSource.getMessage(oe, locale))
+                    .reduce("errors \n", (accu, oe) -> accu+oe+"\n");
+            return ResponseEntity.badRequest().body(errorMessage);
+          }
+       ksiegarnia = ksiegarniaService.dodajKsiegarnie(ksiegarnia);
+       log.info("dodano nowa ksiegarnie", ksiegarnia);
+       return ResponseEntity.status(HttpStatus.CREATED).body(ksiegarnia);
+    }
 }

@@ -17,7 +17,8 @@ Cookie: some-cookie=some-value
 ### stworz nowa ksiegarnie
 POST http://localhost:8080/webapi/ksiegarnie
 Content-Type: application/json
+Accept-Language: en
 
 {
-"nazwa": "Swiat Ksiazkolobow"
+  "nazwa":null
 }
