@@ -1,19 +1,21 @@
 package ksiegarnia.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Ksiegarnia {
 
-    private int id;
+    //@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Integer id;
     private String nazwa;
 
     @JsonIgnore
     private List<Ksiazka> ksiazki = new ArrayList<>();
 
-    public Ksiegarnia(int id, String name) {
+    public Ksiegarnia(Integer id, String name) {
         this.id = id;
         this.nazwa = name;
     }
@@ -21,7 +23,7 @@ public class Ksiegarnia {
     public Ksiegarnia() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

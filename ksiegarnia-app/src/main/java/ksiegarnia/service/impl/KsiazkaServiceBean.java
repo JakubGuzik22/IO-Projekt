@@ -9,11 +9,13 @@ import ksiegarnia.repository.KsiegarniaDao;
 import ksiegarnia.repository.AutorDao;
 import ksiegarnia.repository.KsiazkaDao;
 import ksiegarnia.service.KsiazkaService;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
 
-@Component
+@Service
 public class KsiazkaServiceBean implements KsiazkaService {
 
     private static final Logger log = Logger.getLogger(KsiazkaServiceBean.class.getName());

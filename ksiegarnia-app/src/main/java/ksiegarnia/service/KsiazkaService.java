@@ -19,4 +19,5 @@ public interface KsiazkaService {
     List<Autor> getAllAutorzy();
 
     Autor getAutorById(int id);
+
 }

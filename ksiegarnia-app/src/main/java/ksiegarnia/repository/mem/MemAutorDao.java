@@ -3,10 +3,11 @@ package ksiegarnia.repository.mem;
 import org.springframework.stereotype.Component;
 import ksiegarnia.repository.AutorDao;
 import ksiegarnia.model.Autor;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
+@Repository
 public class MemAutorDao implements AutorDao {
     @Override
     public List<Autor> findAll() {

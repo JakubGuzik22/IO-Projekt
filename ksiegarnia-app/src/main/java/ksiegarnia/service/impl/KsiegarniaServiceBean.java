@@ -7,11 +7,12 @@ import ksiegarnia.model.Ksiegarnia;
 import ksiegarnia.repository.KsiegarniaDao;
 import ksiegarnia.repository.KsiazkaDao;
 import ksiegarnia.service.KsiegarniaService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
 
-@Component
+@Service
 @Scope("prototype")
 public class KsiegarniaServiceBean implements KsiegarniaService {
 
@@ -48,6 +49,12 @@ public class KsiegarniaServiceBean implements KsiegarniaService {
     public List<Ksiegarnia> getKsiegarnieByKsiazka(Ksiazka ksiazka) {
         log.info("searching ksiegarnie by ksiazka " + ksiazka.getId());
         return ksiegarniaDao.findByKsiazka(ksiazka);
+    }
+
+    @Override
+    public Ksiegarnia dodajKsiegarnie(Ksiegarnia k) {
+        log.info("adding ksiegarnia " + k.getId());
+        return ksiegarniaDao.save(k);
     }
 
 }

@@ -13,4 +13,5 @@ public interface KsiegarniaDao {
 
     List<Ksiegarnia> findByKsiazka(Ksiazka m);
 
+    Ksiegarnia save(Ksiegarnia ksiegarnia);
 }

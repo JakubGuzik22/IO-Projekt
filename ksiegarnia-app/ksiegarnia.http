@@ -1,0 +1,23 @@
+### get all ksiegarnie
+GET http://localhost:8080/webapi/ksiegarnie
+
+### get ksiegarnia by id
+GET http://localhost:8080/webapi/ksiegarnie/1
+Accept: application/xml
+
+### get ksiegarnie majace ksiazke
+GET http://localhost:8080/webapi/ksiazki/2/ksiegarnie
+Accept: application/json
+
+### get all ksiegarnie z parametrami
+GET http://localhost:8080/webapi/ksiegarnie?phrase=abc
+custom-header: custom-value
+Cookie: some-cookie=some-value
+
+### stworz nowa ksiegarnie
+POST http://localhost:8080/webapi/ksiegarnie
+Content-Type: application/json
+
+{
+"nazwa": "Swiat Ksiazkolobow"
+}
