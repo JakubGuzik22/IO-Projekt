@@ -28,10 +28,10 @@ public class KsiegarniaRest {
     private final KsiazkaService ksiazkaService;
     private final MessageSource messageSource;
     private final LocaleResolver localeResolver;
-    private final KsiegarniaValidator validator;
+   // private final KsiegarniaValidator validator;
 
-    @InitBinder
-    void initBinder(WebDataBinder binder) {binder.addValidators(validator);}
+//    @InitBinder
+//    void initBinder(WebDataBinder binder) {binder.addValidators(validator);}
 
     @GetMapping("ksiegarnie")
     List<Ksiegarnia> getKsiegarnia(
