@@ -1,5 +1,7 @@
 package ksiegarnia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +46,7 @@ public class Autor {
         this.nazwisko = lastName;
     }
 
+    @JsonIgnore
     public List<Ksiazka> getKsiazki() {
         return ksiazki;
     }

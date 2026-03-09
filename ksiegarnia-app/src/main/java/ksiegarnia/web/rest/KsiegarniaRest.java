@@ -31,7 +31,7 @@ public class KsiegarniaRest {
     private final KsiegarniaValidator validator;
 
     @InitBinder
-    void initBinder(WebDataBinder binder) {binder.setValidator(validator);}
+    void initBinder(WebDataBinder binder) {binder.addValidators(validator);}
 
     @GetMapping("ksiegarnie")
     List<Ksiegarnia> getKsiegarnia(

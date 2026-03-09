@@ -20,4 +20,5 @@ public interface KsiazkaService {
 
     Autor getAutorById(int id);
 
+    Ksiazka dodajKsiazke(Ksiazka ksiazka);
 }

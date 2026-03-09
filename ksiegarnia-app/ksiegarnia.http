@@ -22,3 +22,24 @@ Accept-Language: pl
 {
   "nazwa":"Kamil"
 }
+
+### get all ksiazki
+GET http://localhost:8080/webapi/ksiazki
+
+### get ksiazki by id
+GET http://localhost:8080/webapi/ksiazki/2
+Accept: application/xml
+
+### get ksiazki z danej ksiegarni
+GET http://localhost:8080/webapi/ksiegarnie/1/ksiazki
+Accept: application/json
+
+### stworz nowa ksiazke
+POST http://localhost:8080/webapi/ksiazki
+Content-Type: application/json
+
+{
+  "tytul": "Przypadkowa ksiazka",
+  "autorId": 1,
+  "ocena": 4.9
+}

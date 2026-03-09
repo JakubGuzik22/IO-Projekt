@@ -75,4 +75,10 @@ public class KsiazkaServiceBean implements KsiazkaService {
         log.info("searching autor by id " + id);
         return autorDao.findById(id);
     }
+
+    @Override
+    public Ksiazka dodajKsiazke(Ksiazka k) {
+        log.info("adding ksiegarnia " + k.getId());
+        return ksiazkaDao.add(k);
+    }
 }
