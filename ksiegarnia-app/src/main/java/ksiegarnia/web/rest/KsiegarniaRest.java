@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.LocaleResolver;
 
@@ -27,6 +28,10 @@ public class KsiegarniaRest {
     private final KsiazkaService ksiazkaService;
     private final MessageSource messageSource;
     private final LocaleResolver localeResolver;
+    private final KsiegarniaValidator validator;
+
+    @InitBinder
+    void initBinder(WebDataBinder binder) {binder.setValidator(validator);}
 
     @GetMapping("ksiegarnie")
     List<Ksiegarnia> getKsiegarnia(
@@ -78,9 +83,9 @@ public class KsiegarniaRest {
             Locale locale = localeResolver.resolveLocale(request);
                     //new Locale("pl","PL");
             String errorMessage = errors.getAllErrors().stream()
-                    //.map(oe->messageSource.getMessage(oe.getCode(), new Object[0], locale))
+                    .map(oe->messageSource.getMessage(oe.getCode(), new Object[0], locale))
                     //.map(oe->oe.toString())
-                    .map(oe -> messageSource.getMessage(oe, locale))
+                    //.map(oe -> messageSource.getMessage(oe, locale))
                     .reduce("errors \n", (accu, oe) -> accu+oe+"\n");
             return ResponseEntity.badRequest().body(errorMessage);
           }
