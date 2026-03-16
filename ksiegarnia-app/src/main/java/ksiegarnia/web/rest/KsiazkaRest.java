@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -62,8 +64,13 @@ public class KsiazkaRest {
     }
 
     @PostMapping("/ksiazki")
-    ResponseEntity<?> addKsiazki(@RequestBody KsiazkaDTO ksiazkaDTO){
+    ResponseEntity<?> addKsiazki(@Validated @RequestBody KsiazkaDTO ksiazkaDTO, Errors errors){
         log.info("zaraz dodamy nowa ksiazke {}", ksiazkaDTO);
+
+        if(errors.hasErrors()){{
+        return ResponseEntity.badRequest().build();}
+        }
+
         Ksiazka ksiazka = new Ksiazka();
         ksiazka.setTytul(ksiazkaDTO.getTytul());
         ksiazka.setOcena(ksiazkaDTO.getOcena());

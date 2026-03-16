@@ -28,10 +28,11 @@ public class KsiegarniaRest {
     private final KsiazkaService ksiazkaService;
     private final MessageSource messageSource;
     private final LocaleResolver localeResolver;
-   // private final KsiegarniaValidator validator;
+    private final KsiegarniaValidator validator;
 
 //    @InitBinder
 //    void initBinder(WebDataBinder binder) {binder.addValidators(validator);}
+
 
     @GetMapping("ksiegarnie")
     List<Ksiegarnia> getKsiegarnia(
@@ -44,6 +45,12 @@ public class KsiegarniaRest {
         log.info("parametr phrase: {}", phrase);
         log.info("specjalny naglowek: {}", customHeader);
         log.info("jakies cookie: {}", someCookie);
+
+
+        if(phrase!=null && phrase.equals("foo")){
+            throw new IllegalArgumentException("foo");
+        }
+
         List<Ksiegarnia> ksiegarnie = ksiegarniaService.getAllKsiegarnie();
         log.info("{} ksiegarnie found", ksiegarnie.size());
         return ksiegarnie;

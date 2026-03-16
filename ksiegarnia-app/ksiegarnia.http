@@ -10,7 +10,7 @@ GET http://localhost:8080/webapi/ksiazki/2/ksiegarnie
 Accept: application/json
 
 ### get all ksiegarnie z parametrami
-GET http://localhost:8080/webapi/ksiegarnie?phrase=abc
+GET http://localhost:8080/webapi/ksiegarnie?phrase=foo
 custom-header: custom-value
 Cookie: some-cookie=some-value
 
@@ -20,14 +20,14 @@ Content-Type: application/json
 Accept-Language: pl
 
 {
-  "nazwa":"Kamil"
+  "nazwa":"KsiegarniaZZadania2"
 }
 
 ### get all ksiazki
 GET http://localhost:8080/webapi/ksiazki
 
 ### get ksiazki by id
-GET http://localhost:8080/webapi/ksiazki/2
+GET http://localhost:8080/webapi/ksiazki/4
 Accept: application/xml
 
 ### get ksiazki z danej ksiegarni
@@ -39,7 +39,7 @@ POST http://localhost:8080/webapi/ksiazki
 Content-Type: application/json
 
 {
-  "tytul": "Przypadkowa ksiazka",
-  "autorId": 1,
+  "tytul": "Przypadkowa ksiazka2",
+  "autorId":4,
   "ocena": 4.9
 }

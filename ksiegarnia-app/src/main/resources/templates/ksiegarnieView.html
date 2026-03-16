@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Księgarnia</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <a href="./"><h1>Pix</h1></a>
+    <h2 th:text="${title}"></h2>
+</header>
+<section>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nazwa księgarni</th>
+            <th>Dostępne książki</th>
+        </tr>
+        <tr th:each="ks : ${ksiegarnie}">
+            <td th:text="${ks.id}"></td>
+            <td th:text="${ks.nazwa}"></td>
+            <td class="search-container">
+                <a class="search" th:href="@{/ksiazki(ksiegarniaId=${ks.id})}"></a>
+            </td>
+        </tr>
+    </table>
+</section>
+
+<footer th:text="${tip}"></footer>
+</body>
+</html>
