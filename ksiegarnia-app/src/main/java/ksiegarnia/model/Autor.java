@@ -1,15 +1,22 @@
 package ksiegarnia.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Autor {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String imie;
     private String nazwisko;
+
+    @OneToMany(mappedBy = "autor")
+    @JsonIgnore
     private List<Ksiazka> ksiazki = new ArrayList<>();
 
 

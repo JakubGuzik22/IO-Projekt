@@ -1,14 +1,25 @@
 package ksiegarnia.model;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Ksiazka {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String tytul;
+
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
     private Autor autor;
     private float ocena;
+
+    @ManyToMany
+    @JoinTable (name="ksiazka_ksiegarnia", joinColumns = @JoinColumn(name = "ksiazka_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "ksiegarnia_id", referencedColumnName = "id"))
     private List<Ksiegarnia> ksiegarnie = new ArrayList<>();
 
     public Ksiazka(int id, String title, Autor autor, float rating) {

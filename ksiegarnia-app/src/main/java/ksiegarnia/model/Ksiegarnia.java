@@ -2,21 +2,29 @@ package ksiegarnia.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.data.jpa.repository.EntityGraph;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "ksiegarnia")
 public class Ksiegarnia {
 
     //@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull
     @Size(min = 2, max = 20)
     private String nazwa;
 
+    @ManyToMany(mappedBy = "ksiegarnie")
     @JsonIgnore
     private List<Ksiazka> ksiazki = new ArrayList<>();
 
