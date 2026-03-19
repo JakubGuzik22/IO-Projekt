@@ -8,8 +8,15 @@ services:
     environment:
       - MYSQL_DATABASE=ksiegarnia
       - MYSQL_ROOT_PASSWORD=mysql
+      - LANG=pl_PL.UTF-8
+      - LC_ALL=pl_PL.UTF-8
     ports:
       - '3306:3306'
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: [
+       'mysqld',
+       '--character-set-server=utf8mb4',
+       '--collation-server=utf8mb4_unicode_ci'
+    ]
