@@ -39,7 +39,7 @@ POST http://localhost:8080/webapi/ksiazki
 Content-Type: application/json
 
 {
-  "tytul": "Apocalypse Now",
+  "tytul": "IO",
   "autorId":4,
   "ocena": 4.9
 }
