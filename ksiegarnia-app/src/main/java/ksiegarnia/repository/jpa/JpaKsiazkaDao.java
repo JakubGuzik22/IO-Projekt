@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@Primary
+//@Primary
 public class JpaKsiazkaDao implements KsiazkaDao {
 
     @PersistenceContext
