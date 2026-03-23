@@ -1,6 +1,7 @@
 package ksiegarnia.service.impl;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import ksiegarnia.model.Ksiazka;
 import ksiegarnia.model.Ksiegarnia;
@@ -28,7 +29,7 @@ public class KsiegarniaServiceBean implements KsiegarniaService {
         this.ksiazkaDao = ksiazkaDao;
     }
 
-@Override
+    @Override
     public Ksiegarnia getKsiegarniaById(int id) {
         log.info("searching ksiegarnia by id " + id);
         return ksiegarniaDao.findById(id);
@@ -51,6 +52,7 @@ public class KsiegarniaServiceBean implements KsiegarniaService {
         return ksiegarniaDao.findByKsiazka(ksiazka);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @Override
     public Ksiegarnia dodajKsiegarnie(Ksiegarnia k) {
         log.info("adding ksiegarnia " + k.getId());

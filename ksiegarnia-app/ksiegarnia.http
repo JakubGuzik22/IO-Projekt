@@ -1,5 +1,6 @@
 ### get all ksiegarnie
 GET http://localhost:8080/webapi/ksiegarnie
+Authorization: Basic dbuser1 dbuser1
 
 ### get ksiegarnia by id
 GET http://localhost:8080/webapi/ksiegarnie/1
@@ -17,10 +18,11 @@ Cookie: some-cookie=some-value
 ### stworz nowa ksiegarnie
 POST http://localhost:8080/webapi/ksiegarnie
 Content-Type: application/json
-Accept-Language: pl
+Accept-Language: it
+Authorization: Basic dbuser1 dbuser1
 
 {
-  "nazwa":"KsiegarniaZZadania2"
+  "nazwa": "KsiegarniaZZadania3"
 }
 
 ### get all ksiazki
@@ -37,6 +39,7 @@ Accept: application/json
 ### stworz nowa ksiazke
 POST http://localhost:8080/webapi/ksiazki
 Content-Type: application/json
+Authorization: Basic dbuser1 dbuser1
 
 {
   "tytul": "IO",
